@@ -21,9 +21,6 @@ const checkCurrentOptEl = () => {
 }
 
 
-
-
-
 const appendNumber = numStr => {
   //can't append more than one decimal point
   if( numStr === "." && currentEl.textContent.includes('.')){
@@ -44,8 +41,8 @@ const compute = () => {
   let computation
   const prev = parseFloat(previousEl.textContent)
   const current = parseFloat(currentEl.textContent)
-  if (isNaN(prev) && isNaN(current)){ 
-    return
+  if (isNaN(prev) && isNaN(current) || current===0 && operator!=='*'){ 
+    return previousEl.textContent
   }
   switch (operator) {
     case '+':
