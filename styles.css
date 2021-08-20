@@ -41,6 +41,9 @@ body{
   word-wrap:break-word;
   word-break:break-all;
 }
+.previous{
+  color:#a5a5a5;
+}
 .buttons{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -73,4 +76,9 @@ body{
   width:125px;
   border-radius:25px;
   grid-column: span 2;
+}
+
+.buttons .equals:hover{
+  color:#f1a33c; 
+  background-color:white; 
 }

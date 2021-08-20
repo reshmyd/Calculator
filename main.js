@@ -1,12 +1,27 @@
 const numberButtons = document.querySelectorAll('.number')
-const operationButtons = document.querySelectorAll('.operation')
+const addButton = document.querySelector('.add')
+const subtractButton = document.querySelector('.subtract')
+const divideButton = document.querySelector('.divide')
+const multiplyButton = document.querySelector('.multiply')
+const allClearButton = document.querySelector('.ac')
 const pmEl = document.querySelector('.pm')
 const percentEl = document.querySelector('.percent')
 const equalsButton = document.querySelector('.equals')
-const allClearButton = document.querySelector('.ac')
 const currentEl = document.querySelector('.current')
 const previousEl = document.querySelector('.previous')
+let currentOptEl 
 let operator = ''
+
+const checkCurrentOptEl = () => {
+  if(currentOptEl){
+    currentOptEl.style.background = "#f1a33c"
+    currentOptEl.style.color = "white"
+    }
+  return  
+}
+
+
+
 
 
 const appendNumber = numStr => {
@@ -15,7 +30,11 @@ const appendNumber = numStr => {
     return
   }
   if(currentEl.textContent === '0'){
+    if(numStr === "."){
+      currentEl.textContent += numStr
+    } else {
     currentEl.textContent = numStr
+    }
   } else {
     currentEl.textContent += numStr  
   }
@@ -47,6 +66,19 @@ const compute = () => {
   return (Math.round(computation * 100)/100).toString()
 }
 
+const handleOperatorClick = opt => {
+  if(!previousEl.textContent){
+    previousEl.textContent = currentEl.textContent
+    currentEl.textContent = '0'
+    operator = opt
+    return
+  }
+  console.log('a')
+  previousEl.textContent = compute()
+  currentEl.textContent = '0'
+  operator = opt
+  }
+
 
 const allClear = () => {
   currentEl.textContent = '0'
@@ -56,26 +88,53 @@ const allClear = () => {
 
 numberButtons.forEach(button => {
   button.addEventListener('click', () => {
+    if(currentOptEl){
+    currentOptEl.style.background = "#f1a33c"
+    currentOptEl.style.color = "white"
+    }
     appendNumber(button.textContent)
   })
 })
 
-operationButtons.forEach(button => {
-  button.addEventListener('click', () => {
-  if(!previousEl.textContent){
-    operator = button.textContent
-    previousEl.textContent = currentEl.textContent
-    currentEl.textContent = '0'
-    return
-  }
-  previousEl.textContent = compute()
-  operator = button.textContent
-  currentEl.textContent = '0'
+
+
+addButton.addEventListener('click', () => {
+  checkCurrentOptEl()
+  addButton.style.background = "white"
+  addButton.style.color = "#f1a33c"
+  currentOptEl = addButton
+  handleOperatorClick(addButton.textContent)
   })
-})
+
+  subtractButton.addEventListener('click', () => {
+    checkCurrentOptEl()
+    subtractButton.style.background = "white"
+    subtractButton.style.color = "#f1a33c"
+    currentOptEl = subtractButton
+    handleOperatorClick(subtractButton.textContent)
+    }) 
+    
+  divideButton.addEventListener('click', () => {
+    checkCurrentOptEl()
+    divideButton.style.background = "white"
+    divideButton.style.color = "#f1a33c"
+    currentOptEl = divideButton
+    handleOperatorClick(divideButton.textContent)
+    })  
+
+    multiplyButton.addEventListener('click', () => {
+      checkCurrentOptEl()
+      multiplyButton.style.background = "white"
+      multiplyButton.style.color = "#f1a33c"
+      currentOptEl = multiplyButton
+      handleOperatorClick(multiplyButton.textContent)
+      })  
+  
+
 
 
 equalsButton.addEventListener('click', () => {
+  checkCurrentOptEl()
   if(previousEl.textContent){
   currentEl.textContent = compute()
   previousEl.textContent = ''
@@ -83,10 +142,12 @@ equalsButton.addEventListener('click', () => {
 }})
 
 allClearButton.addEventListener('click', () => {
+  checkCurrentOptEl()
   allClear()
 })
 
 pmEl.addEventListener('click', ()=>{
+  checkCurrentOptEl()
   if(isNaN(currentEl.textContent)){
     return
   }else {
@@ -94,11 +155,11 @@ pmEl.addEventListener('click', ()=>{
   }
 })
 
-
 percentEl.addEventListener('click', ()=>{
+  checkCurrentOptEl()
   if(isNaN(currentEl.textContent)){
     return
   }else {
-    currentEl.textContent = (Math.round(+displayEl.textContent)/100).toString()
+    currentEl.textContent = (Math.round(+currentEl.textContent)/100).toString()
   }
 })
