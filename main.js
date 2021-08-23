@@ -13,6 +13,7 @@ let currentOptEl
 let operator = ''
 
 const checkCurrentOptEl = () => {
+  //resetting the background and color of operator buttons after another button is pressed
   if(currentOptEl){
     currentOptEl.style.background = "#f1a33c"
     currentOptEl.style.color = "white"
@@ -26,6 +27,7 @@ const appendNumber = numStr => {
   if( numStr === "." && currentEl.textContent.includes('.')){
     return
   }
+  
   if(currentEl.textContent === '0'){
     if(numStr === "."){
       currentEl.textContent += numStr
@@ -70,7 +72,7 @@ const handleOperatorClick = opt => {
     operator = opt
     return
   }
-  console.log('a')
+  
   previousEl.textContent = compute()
   currentEl.textContent = '0'
   operator = opt
@@ -85,10 +87,7 @@ const allClear = () => {
 
 numberButtons.forEach(button => {
   button.addEventListener('click', () => {
-    if(currentOptEl){
-    currentOptEl.style.background = "#f1a33c"
-    currentOptEl.style.color = "white"
-    }
+    checkCurrentOptEl()
     appendNumber(button.textContent)
   })
 })
