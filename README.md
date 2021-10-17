@@ -1,3 +1,2 @@
 # Calculator
-Designed a calculator using HTML, CSS & JavaScript. 
-It doesn't follow the bodmas rule, does the operations in the order clicked.
+Designed a calculator using HTML, CSS & vanilla JavaScript based on Apple IOS design. 
