@@ -10,6 +10,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(to right, rgba(212, 198, 170, 1), rgba(212, 198, 170, 0.3));
 }
 
 .calculator-container {

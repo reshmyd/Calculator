@@ -1,0 +1,23 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "Designed a calculator using HTML, CSS & JavaScript.  It doesn't follow the bodmas rule, does the operations in the order clicked.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reshmyd/Calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reshmyd/Calculator/issues"
+  },
+  "homepage": "https://github.com/reshmyd/Calculator#readme",
+  "devDependencies": {
+    "cypress": "^8.3.1"
+  }
+}
