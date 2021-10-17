@@ -1,3 +1,4 @@
 # Calculator
-Designed a calculator using HTML, CSS & JavaScript. 
-It doesn't follow the bodmas rule, does the operations in the order clicked.
+Designed a calculator using HTML, CSS & vanilla JavaScript based on Apple IOS design. 
+Made subtle improvements to the layout that I think was missing on the common phone version.
+The Calculator is end to end tested using Cypress npm package.
